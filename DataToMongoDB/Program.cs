@@ -40,16 +40,20 @@ namespace DataToMongoDB
                 else
                 {
                     var lastDoc = collection.AsQueryable().OrderByDescending(c => c.header.number).First();
-                    i = int.Parse(lastDoc._id) + 1;
+                    i = lastDoc.header.number + 1;
                 }
 
-                while (i <= 30)
+                while (true)
                 {
 
                     var rpcClient = new RpcClient(new Uri("https://rpc.ankr.com/eth"));
                     var web3 = new Web3(rpcClient);
                     var data = await web3.Eth.Blocks.GetBlockWithTransactionsByNumber.SendRequestAsync(new HexBigInteger(i));
 
+                    if (data == null)
+                    {
+                        break;
+                    }
 
                     var block = new BlockHeader()
                     {
@@ -96,12 +100,12 @@ namespace DataToMongoDB
                     };
 
 
-                    var oneData = new Block { header = block, transactions = transaction, _id = data.Number.Value.ToString() };
+                    var oneData = new Block { header = block, transactions = transaction, _id =  string.Concat(data.Number.Value, "-", data.Number.HexValue)  };
 
                     await collection.InsertOneAsync(oneData);
 
                     var lastDocument = collection.AsQueryable().OrderByDescending(c => c.header.number).First();
-                    i = int.Parse(lastDocument._id);
+                    i = lastDocument.header.number;
 
                     i++;
                 }   
