@@ -1,7 +1,10 @@
-﻿namespace DataToMongoDB.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DataToDb.Models
 {
     public class TransactionData
     {
+        [Key]
         public string from { get; set; }
         public string to { get; set; }
         public string hash { get; set; }

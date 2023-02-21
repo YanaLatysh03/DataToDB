@@ -1,11 +1,11 @@
-﻿
-
-namespace DataToMongoDB.Models
+﻿namespace DataToDb.Models.DTO
 {
-    public class Block
+    public class MongoModel
     {
-        public string _id { get; set; }
+        public string id { get; set; }
+
         public BlockHeader header { get; set; }
+
         public Transaction transactions { get; set; }
     }
 }

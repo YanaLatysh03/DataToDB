@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataToMongoDB", "DataToMongoDB\DataToMongoDB.csproj", "{7EC1A056-0EE4-4E5C-9180-DCDDE2B5C4E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingDataToDbService", "UsingDataToDbService\UsingDataToDbService.csproj", "{18166A6E-4C0D-4A49-BB9E-46928DBD3ADE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataToDb", "DataToDb\DataToDb.csproj", "{EEBE8719-42C2-4AC6-8193-6BBBE0F4C5A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7EC1A056-0EE4-4E5C-9180-DCDDE2B5C4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EC1A056-0EE4-4E5C-9180-DCDDE2B5C4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EC1A056-0EE4-4E5C-9180-DCDDE2B5C4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EC1A056-0EE4-4E5C-9180-DCDDE2B5C4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18166A6E-4C0D-4A49-BB9E-46928DBD3ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18166A6E-4C0D-4A49-BB9E-46928DBD3ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18166A6E-4C0D-4A49-BB9E-46928DBD3ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18166A6E-4C0D-4A49-BB9E-46928DBD3ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBE8719-42C2-4AC6-8193-6BBBE0F4C5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBE8719-42C2-4AC6-8193-6BBBE0F4C5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBE8719-42C2-4AC6-8193-6BBBE0F4C5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBE8719-42C2-4AC6-8193-6BBBE0F4C5A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
