@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataToDb\DataToDb.csproj" />
+    <ProjectReference Include="..\EthBlockIndexer\EthBlockIndexer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
