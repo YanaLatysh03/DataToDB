@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DataToDb.Models
+namespace EthBlockIndexer.Models
 {
     public class TransactionData
     {

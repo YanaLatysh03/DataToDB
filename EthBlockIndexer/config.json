@@ -1,8 +1,0 @@
-﻿{
-  "MongoDb": {
-    "ConnectionString": "mongodb://localhost:27017"
-  },
-  "PostreDb": {
-    "ConnectionString": "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=0303"
-  }
-}

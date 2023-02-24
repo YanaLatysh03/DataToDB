@@ -1,4 +1,4 @@
-﻿namespace DataToDb.Models
+﻿namespace EthBlockIndexer.Models
 {
     public class Block
     {

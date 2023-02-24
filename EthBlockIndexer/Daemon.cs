@@ -4,11 +4,11 @@ using System;
 using Nethereum.JsonRpc.Client;
 using Nethereum.Web3;
 using Nethereum.Hex.HexTypes;
-using DataToDb.Models;
 using Nethereum.RPC.Eth.DTOs;
 using DataToDb.Repository;
+using EthBlockIndexer.Models;
 
-namespace DataToDb.Service
+namespace EthBlockIndexer
 {
     public class Daemon
     {
@@ -128,9 +128,9 @@ namespace DataToDb.Service
             return transaction;
         }
 
-        public ModelForLastRecordTable CreateLastRecordModel(int number, string pair)
+        public State CreateLastRecordModel(int number, string pair)
         {
-            var lastRecordModel = new ModelForLastRecordTable()
+            var lastRecordModel = new State()
             {
                 Id = 1,
                 Value = number,

@@ -1,5 +1,6 @@
-﻿using System.Threading.Tasks;
-using static UsingDataToDbService.Factory;
+﻿using EthBlockIndexer;
+using System.Threading.Tasks;
+using static UsingDataToDbService.StorageFactory;
 
 namespace UsingDataToDbService
 {
@@ -7,9 +8,12 @@ namespace UsingDataToDbService
     {
         public static async Task Main(string[] args)
         {
-            KindDb kindDb = KindDb.Mongo;
+            KindDb kindDb = KindDb.Postgre;
 
-            await Factory.CreateConfiguration(kindDb);
+            var storage = CreateStorage(kindDb);
+
+            var daemon = new Daemon(storage);
+            await daemon.GetBlockData();
         }
     }
 }

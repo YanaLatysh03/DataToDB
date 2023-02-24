@@ -1,4 +1,6 @@
-﻿namespace DataToDb.Models.DTO
+﻿using EthBlockIndexer.Models;
+
+namespace EthBlockIndexer.Domain.Storage.Mongo.Model
 {
     public class MongoModel
     {

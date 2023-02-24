@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using DataToDb.Models;
-using DataToDb.Models.DTO;
+using EthBlockIndexer.Domain.Storage.Mongo.Model;
+using EthBlockIndexer.Models;
 
-namespace DataToDb
+namespace EthBlockIndexer
 {
     public class MappingConfig
     {

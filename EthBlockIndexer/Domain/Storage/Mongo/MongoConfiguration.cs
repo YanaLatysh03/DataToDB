@@ -1,18 +1,18 @@
 ﻿using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using DataToDb.Models.DTO;
-using DataToDb.Models;
+using EthBlockIndexer.Domain.Storage.Mongo.Model;
+using EthBlockIndexer.Models;
 
-namespace DataToDb
+namespace EthBlockIndexer.Domain.Storage.Mongo
 {
-    public class ApplicationMongoContext
+    public class MongoConfiguration
     {
-        private readonly string DatabaseName = "blockData";
-        private readonly string CollectionName = "data";
-        private readonly string LastRecordCollection = "lastRecord";
+        private static readonly string DatabaseName = "blockData";
+        private static readonly string CollectionName = "data";
+        private static readonly string LastRecordCollection = "lastRecord";
 
-        public (IMongoCollection<MongoModel> blocks, IMongoCollection<ModelForLastRecordTable> lastRecord) CreateConfiguration()
+        public static (IMongoCollection<MongoModel> blocks, IMongoCollection<State> lastRecord) CreateConfiguration()
         {
             var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -25,7 +25,7 @@ namespace DataToDb
             var client = new MongoClient(connectionString);
             var db = client.GetDatabase(DatabaseName);
             var blockCollection = db.GetCollection<MongoModel>(CollectionName);
-            var lastRecorCollection = db.GetCollection<ModelForLastRecordTable>(LastRecordCollection);
+            var lastRecorCollection = db.GetCollection<State>(LastRecordCollection);
 
             var result = (blocks: blockCollection, lastRecord: lastRecorCollection);
 

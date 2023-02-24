@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DataToDb.Models
+namespace EthBlockIndexer.Models
 {
-    public class ModelForLastRecordTable
+    public class State
     {
         [Key]
         public int Id { get; set; }

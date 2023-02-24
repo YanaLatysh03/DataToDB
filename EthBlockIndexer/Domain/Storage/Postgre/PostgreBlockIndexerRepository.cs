@@ -1,20 +1,21 @@
-﻿using DataToDb.Models.DTO;
-using DataToDb.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
+using DataToDb.Repository;
+using EthBlockIndexer.Models;
+using EthBlockIndexer.Domain.Storage.Postgre.Model;
 
-namespace DataToDb.Repository
+namespace EthBlockIndexer.Domain.Storage.Postgre
 {
     public class PostgreBlockIndexerRepository : IBlockIndexerRepository
     {
-        private ApplicationPostgreContext _context = new ApplicationPostgreContext();
+        private PostgreConfiguration _context = new PostgreConfiguration();
 
         public PostgreBlockIndexerRepository()
         {
         }
 
-        public async Task<Block> AddDataToDb(Block blockData, ModelForLastRecordTable lastRecordModel)
+        public async Task<Block> AddDataToDb(Block blockData, State lastRecordModel)
         {
             var dtoModel = GetPostgreDtoFromBlock(blockData);
 
@@ -37,7 +38,7 @@ namespace DataToDb.Repository
             return blockData;
         }
 
-        public ModelForLastRecordTable GetRecordFromLastBlockTable()
+        public State GetRecordFromLastBlockTable()
         {
             var lastOrder = _context.LastBlock.OrderBy(c => c.Id).LastOrDefault();
 

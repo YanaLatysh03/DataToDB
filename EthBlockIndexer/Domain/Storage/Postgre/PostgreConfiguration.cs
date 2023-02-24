@@ -1,18 +1,18 @@
-﻿using DataToDb.Models;
-using DataToDb.Models.DTO;
+﻿using EthBlockIndexer.Domain.Storage.Postgre.Model;
+using EthBlockIndexer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace DataToDb
+namespace EthBlockIndexer.Domain.Storage.Postgre
 {
-    public class ApplicationPostgreContext : DbContext
+    public class PostgreConfiguration : DbContext
     {
         public DbSet<PostgreModel> Blocks { get; set; }
 
-        public DbSet<ModelForLastRecordTable> LastBlock { get; set; }
+        public DbSet<State> LastBlock { get; set; }
 
-        public ApplicationPostgreContext()
+        public PostgreConfiguration()
         {
         }
 
