@@ -1,6 +1,6 @@
-﻿using EthBlockIndexer.Models;
+﻿using EthBlockIndexer.Domain;
 
-namespace EthBlockIndexer.Domain.Storage.Mongo.Model
+namespace EthBlockIndexer.Storage.Mongo.Model
 {
     public class MongoModel
     {

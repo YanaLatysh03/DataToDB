@@ -1,10 +1,10 @@
-﻿using EthBlockIndexer.Domain.Storage.Postgre.Model;
-using EthBlockIndexer.Models;
+﻿using EthBlockIndexer.Domain;
+using EthBlockIndexer.Storage.Postgre.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace EthBlockIndexer.Domain.Storage.Postgre
+namespace EthBlockIndexer.Storage.Postgre
 {
     public class PostgreConfiguration : DbContext
     {

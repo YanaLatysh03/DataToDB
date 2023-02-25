@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using System.Text.Json;
 using DataToDb.Repository;
-using EthBlockIndexer.Models;
-using EthBlockIndexer.Domain.Storage.Postgre.Model;
+using System;
+using EthBlockIndexer.Storage.Postgre.Model;
+using EthBlockIndexer.Domain;
 
-namespace EthBlockIndexer.Domain.Storage.Postgre
+namespace EthBlockIndexer.Storage.Postgre
 {
     public class PostgreBlockIndexerRepository : IBlockIndexerRepository
     {

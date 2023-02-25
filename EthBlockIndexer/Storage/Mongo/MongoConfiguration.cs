@@ -1,10 +1,10 @@
 ﻿using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using EthBlockIndexer.Domain.Storage.Mongo.Model;
-using EthBlockIndexer.Models;
+using EthBlockIndexer.Storage.Mongo.Model;
+using EthBlockIndexer.Domain;
 
-namespace EthBlockIndexer.Domain.Storage.Mongo
+namespace EthBlockIndexer.Storage.Mongo
 {
     public class MongoConfiguration
     {

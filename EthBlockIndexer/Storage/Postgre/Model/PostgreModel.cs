@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EthBlockIndexer.Domain.Storage.Postgre.Model
+namespace EthBlockIndexer.Storage.Postgre.Model
 {
     public class PostgreModel
     {

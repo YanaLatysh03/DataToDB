@@ -1,4 +1,4 @@
-﻿using EthBlockIndexer.Models;
+﻿using EthBlockIndexer.Domain;
 using System.Threading.Tasks;
 
 namespace DataToDb.Repository

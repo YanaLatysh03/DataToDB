@@ -1,30 +1,24 @@
 ﻿using DataToDb.Repository;
-using EthBlockIndexer.Domain.Storage.Mongo;
-using EthBlockIndexer.Domain.Storage.Postgre;
+using EthBlockIndexer.Storage.Mongo;
+using EthBlockIndexer.Storage.Postgre;
 
-namespace UsingDataToDbService
+namespace ConsoleApp
 {
     public class StorageFactory
     {
-        public static IBlockIndexerRepository CreateStorage(KindDb kindDb)
+        public static IBlockIndexerRepository CreateStorage(string typeDb)
         {
-            switch (kindDb)
+            switch (typeDb)
             {
-                case KindDb.Mongo:
+                case "Postgre":
                     IBlockIndexerRepository mongoRepository = new MongoBlockIndexerRepository();
                     return mongoRepository;
-                case KindDb.Postgre:
+                case "Mongo":
                     IBlockIndexerRepository postgreRepository = new PostgreBlockIndexerRepository();
                     return postgreRepository;
                 default:
-                    return null;
+                    throw new System.ArgumentException("Database type is not set");
             }
-        }
-
-        public enum KindDb
-        {
-            Mongo,
-            Postgre
         }
     }
 }

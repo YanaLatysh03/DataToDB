@@ -1,4 +1,4 @@
-﻿namespace EthBlockIndexer.Models
+﻿namespace EthBlockIndexer.Domain
 {
     public class Block
     {

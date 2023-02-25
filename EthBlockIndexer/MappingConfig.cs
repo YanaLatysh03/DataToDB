@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using EthBlockIndexer.Domain.Storage.Mongo.Model;
-using EthBlockIndexer.Models;
+using EthBlockIndexer.Domain;
+using EthBlockIndexer.Storage.Mongo.Model;
 
 namespace EthBlockIndexer
 {

@@ -4,5 +4,7 @@
   },
   "PostreDb": {
     "ConnectionString": "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=0303"
-  }
+  },
+  "TypeDb": "Postgre"
+  //"TypeDb": "Mongo"
 }

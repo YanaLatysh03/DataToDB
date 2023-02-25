@@ -6,21 +6,26 @@ using Nethereum.Web3;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.Eth.DTOs;
 using DataToDb.Repository;
-using EthBlockIndexer.Models;
+using Microsoft.Extensions.Logging;
+using EthBlockIndexer.Domain;
 
 namespace EthBlockIndexer
 {
-    public class Daemon
+    public class EthBlockProcessor
     {
 
         private IBlockIndexerRepository _repository;
+        private readonly ILoggerFactory _logerFactory;
+        private readonly ILogger _logger;
 
-        public Daemon(IBlockIndexerRepository postgreRepository)
+        public EthBlockProcessor(IBlockIndexerRepository postgreRepository, ILoggerFactory logerFactory)
         {
             _repository = postgreRepository;
+            _logerFactory = logerFactory;
+            _logger = _logerFactory.CreateLogger<EthBlockProcessor>();
         }
 
-        public async Task GetBlockData()
+        public async Task RunProcessAddingDatatoDB()
         {
             try
             {
@@ -33,10 +38,11 @@ namespace EthBlockIndexer
                     i = lastRecord.Value + 1;
                 }
 
+                var rpcClient = new RpcClient(new Uri("https://rpc.ankr.com/eth"));
+                var web3 = new Web3(rpcClient);
+
                 while (true)
                 {
-                    var rpcClient = new RpcClient(new Uri("https://rpc.ankr.com/eth"));
-                    var web3 = new Web3(rpcClient);
                     var data = await web3.Eth.Blocks.GetBlockWithTransactionsByNumber.SendRequestAsync(new HexBigInteger(i));
 
                     if (data == null)
@@ -48,14 +54,14 @@ namespace EthBlockIndexer
                     var arrayTransData = AddTransactionDataToModel(data);
                     var transaction = AddTransactionToModel(arrayTransData);
 
-                    var oneData = new Models.Block
+                    var oneData = new Domain.Block
                     {
                         Header = block,
                         Transactions = transaction,
                         Id = string.Concat(data.Number.Value, "-", data.Number.HexValue)
                     };
 
-                    var lastRecordModel = CreateLastRecordModel(oneData.Header.number, oneData.Id);
+                    State lastRecordModel = CreateLastRecordModel(oneData.Header.number, oneData.Id);
 
                     var blockData = await _repository.AddDataToDb(oneData, lastRecordModel);
 
@@ -64,7 +70,8 @@ namespace EthBlockIndexer
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                _logger.LogError(ex.Message);
+                throw;
             }
         }
 
@@ -118,9 +125,9 @@ namespace EthBlockIndexer
             return arrayTransData;
         }
 
-        public Models.Transaction AddTransactionToModel(TransactionData[] arrayTransData)
+        public Domain.Transaction AddTransactionToModel(TransactionData[] arrayTransData)
         {
-            var transaction = new Models.Transaction()
+            var transaction = new Domain.Transaction()
             {
                 data = arrayTransData,
             };

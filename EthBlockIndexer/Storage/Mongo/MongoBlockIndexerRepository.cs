@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using EthBlockIndexer.Domain.Storage.Mongo.Model;
 using DataToDb.Repository;
 using MongoDB.Driver;
 using System.Linq;
 using System.Threading.Tasks;
-using EthBlockIndexer.Models;
+using EthBlockIndexer.Storage.Mongo.Model;
+using EthBlockIndexer.Domain;
 
-namespace EthBlockIndexer.Domain.Storage.Mongo
+namespace EthBlockIndexer.Storage.Mongo
 {
     public class MongoBlockIndexerRepository : IBlockIndexerRepository
     {
